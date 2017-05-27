@@ -1,0 +1,14 @@
+====== Change Log ======
+
+V 1.1
+ - Defined Plugin DIR and URL Constants
+ - Updated functions.php
+ 	$extra_content is only added if $are_saucyss_enabled == true
+ - Updated admin-page.php
+ 	handles variables better
+ - Updated shortcodes.php
+ 	handles variables better
+ - Updated enqueue-scripts.js
+	 included plugin-scripts.js
+ - Created plugin-scripts.js
+ 	onclick .open-share-window js func
