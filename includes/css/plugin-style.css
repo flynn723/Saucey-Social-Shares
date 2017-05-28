@@ -17,6 +17,7 @@
     float: left;
     padding: 5px;
     margin: 0;
+    font-size
 }
 #saucy-social-shares-ul.saucyss-btns-2 li {
     width: 33.33%;
@@ -25,6 +26,12 @@
     width: 25%;
 }
 #saucy-social-shares-ul.saucyss-btns-4 li {
+    width: 16.66%;    
+}
+#saucy-social-shares-ul.saucyss-btns-5 li {
+    width: 20%;
+}
+#saucy-social-shares-ul.saucyss-btns-6 li {
     width: 16.66%;
 }
 #saucy-social-shares-ul.Dark li {
@@ -51,6 +58,10 @@
 #saucy-social-shares-ul.saucyss-btns-4 li:first-child {
     width: 33.22%;
 }
+#saucy-social-shares-ul.saucyss-btns-5 li:first-child,
+#saucy-social-shares-ul.saucyss-btns-6 li:first-child {
+    display: none;
+}
 #saucy-social-shares-ul.Dark li:first-child:hover,
 #saucy-social-shares-ul.Dark li:first-child:focus {
     background: #444;
@@ -60,6 +71,12 @@
 #saucy-social-shares-ul.Light li:first-child:focus {
     background: #c7c7c7;
     color: #444;
+}
+#saucy-social-shares-ul.saucyss-btns-5 li:nth-child(2),
+#saucy-social-shares-ul.saucyss-btns-6 li:nth-child(2) {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-left: none;
 }
 #saucy-social-shares-ul.Dark li:hover,
 #saucy-social-shares-ul.Dark li:focus {
@@ -87,4 +104,26 @@
 #saucy-social-shares-ul.Light li a:hover,
 #saucy-social-shares-ul.Light li a:focus {
     color: #fff;
+}
+@media (min-width: 768px) {
+    .mobile-share-text {
+        display: none;
+    }
+    #saucy-social-shares-ul.saucyss-btns-5 li {
+        width: 16.66%;
+    }
+    #saucy-social-shares-ul.saucyss-btns-6 li {
+        width: 13.89%;
+    }
+    #saucy-social-shares-ul.saucyss-btns-5 li:first-child,
+    #saucy-social-shares-ul.saucyss-btns-6 li:first-child {
+        display: block;
+        width: 16.66%;
+    }
+    #saucy-social-shares-ul.saucyss-btns-5 li:nth-child(2),
+    #saucy-social-shares-ul.saucyss-btns-6 li:nth-child(2) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left: 1px solid #fff;
+    }
 }

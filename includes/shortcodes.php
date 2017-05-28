@@ -13,10 +13,6 @@ function saucy_social_shares_func(){
   $post = get_post();
 
   $share_btns_enabled = 0;
-
-  // Get Twitter Handle
-  $twitterHandle = $saucyss_options['twitter_handle'];
-  $twitterHandle = str_replace('https://twitter.com/', '', $twitterHandle);
   // Get current page URL 
   $urlToShare = get_permalink($post->ID);
   // Get current page title
@@ -34,6 +30,13 @@ function saucy_social_shares_func(){
 
   /* Twitter */
   if ( isset( $saucyss_options['enable_Twitter'] ) ) {
+
+    if ( isset( $saucyss_options['twitter_handle'] ) ) {
+      // Get Twitter Handle
+      $twitterHandle = $saucyss_options['twitter_handle'];
+      $twitterHandle = str_replace('https://twitter.com/', '', $twitterHandle);
+    }
+
     if ($twitterHandle){  
       $twitter_url = 'https://twitter.com/intent/tweet?text='.$titleToShare.'&amp;url='.$urlToShare.'&amp;via='.$twitterHandle;
     } else {
@@ -54,7 +57,21 @@ function saucy_social_shares_func(){
     $share_btns_enabled++;    
   }
 
+  /* Linkedin */
+  if ( isset( $saucyss_options['enable_Linkedin'] ) ) {
+    $linkedin_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' . $urlToShare . '&title=' . $titleToShare;
+    $share_btns_enabled++;
+  }
+
+  /* Reddit */
+  if ( isset( $saucyss_options['enable_Reddit'] ) ) {
+    $reddit_url = 'http://www.reddit.com/submit?url=' . $urlToShare . '&title=' . $titleToShare;
+    $share_btns_enabled++;
+  }  
+
   ob_start(); ?>
+
+  <h3 class="mobile-share-text"><?php _e('Share', 'saucyss_'); ?></h3>
 
   <ul id="saucy-social-shares-ul" class="social-shares <?php echo $saucyss_options['styling_theme']; ?> saucyss-btns-<?php echo $share_btns_enabled; ?> clearfix">
 
@@ -88,6 +105,22 @@ function saucy_social_shares_func(){
       <li class="google-share">
         <a href="<?php echo $google_url; ?>" title="<?php esc_attr_e('Share On Google Plus'); ?>" rel="nofollow" class="open-share-window" >
           <i class="fa fa-google"></i>
+        </a>
+      </li>
+    <?php endif;
+
+    if ( isset( $saucyss_options['enable_Linkedin'] ) ): ?>
+      <li class="linkedin-share">
+        <a href="<?php echo $linkedin_url; ?>" title="<?php esc_attr_e('Share On Linkedin'); ?>" rel="nofollow" class="open-share-window" >
+          <i class="fa fa-linkedin"></i>
+        </a>
+      </li>
+    <?php endif;
+
+    if ( isset( $saucyss_options['enable_Reddit'] ) ): ?>
+      <li class="reddit-share">
+        <a href="<?php echo $reddit_url; ?>" title="<?php esc_attr_e('Share On Reddit'); ?>" rel="nofollow" class="open-share-window" >
+          <i class="fa fa-reddit"></i>
         </a>
       </li>
     <?php endif; ?>

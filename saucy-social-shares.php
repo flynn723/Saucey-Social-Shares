@@ -5,7 +5,7 @@ Plugin URI: https://mydigitalsauce.com
 Description: A Saucy Simple plugin that allows you to place social share buttons anywhere on your WordPress site via a shortcode or appending the social share buttons to pages posts or any custom post type.
 Author: MyDigitalSauce
 Author URI: https://mydigitalsauce.com/author/mydigitalsauce
-Version: 1.1
+Version: 1.2
 */
 
 /***************************
@@ -21,7 +21,6 @@ $saucyss_options = get_option('saucyss_settings');
 * Constants
 ***************************/
 // if(!defined('SAUCYSS_DIR')) define('SAUCYSS_DIR', dirname( __FILE__ ) );
-// if(!defined('SAUCYSS_URL')) define('SAUCYSS_URL', plugin_dir_url( __FILE__ ) );
 
 define('SAUCYSS_DIR', dirname( __FILE__ ) );
 
@@ -46,12 +45,14 @@ function saucyss_textdomain() {
 }
 add_action('init', 'saucyss_textdomain');
 
+
 /***************************
 * Includes
 ***************************/
 /* Admin Area - Back End */
 if ( is_admin() ) {
 	include( SAUCYSS_URL . 'includes/admin-page.php'); // admin page	
+	include( SAUCYSS_URL . 'includes/admin-enqueue-scripts.php'); // enqueues js and css
 } else {
 	/* Front End */
 	include( SAUCYSS_URL . 'includes/enqueue-scripts.php'); // enqueues js and css
